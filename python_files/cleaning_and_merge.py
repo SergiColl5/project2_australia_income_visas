@@ -23,7 +23,7 @@ migration.drop(columns='Total',inplace=True)
 #Stack and set dataframe
 
 migration = mf.stackAndDataframe(migration)
-new_columns=['Year','Activity','Sponosored_visas']
+new_columns=['Year','Activity','Sponsored_visas']
 migration.columns=new_columns
 migration['Year']= migration['Year'].apply(lambda x : x.split('–')[0])
 
