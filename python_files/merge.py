@@ -1,5 +1,5 @@
 import pandas as pd
-# I import both cleaned xlsx files and merge them
+# I import both cleaned xlsx files and merge them.
 income = pd.read_excel('../data/income_clean.xlsx')
 migration= pd.read_excel('../data/migration_clean.xlsx')
 all_together = pd.merge(migration,income, on=['Year','Activity'],how='left')
