@@ -15,5 +15,3 @@ def stackAndDataframe (df):
     df.reset_index(inplace=True)
     return df
 
-def export_to_excel (df):
-    return df
