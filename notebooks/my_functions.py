@@ -15,3 +15,10 @@ def stackAndDataframe (df):
     df.reset_index(inplace=True)
     return df
 
+def charactersout (x):
+    x = str(x)
+    if '<' in x:
+        x = x.replace('<','')
+        return float(x)
+    else:
+        return float(x)
