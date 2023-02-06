@@ -26,7 +26,7 @@ migration = mf.stackAndDataframe(migration)
 new_columns=['Year','Activity','Sponsored_visas']
 migration.columns=new_columns
 migration['Year']= migration['Year'].apply(lambda x : x.split('–')[0])
-
+migration['Sponsored_visas']=migration['Sponsored_visas'].apply(mf.charactersout)
 income = mf.stackAndDataframe(income)
 new_columns=['Year','Activity','Median_income']
 income.columns=new_columns
