@@ -12,7 +12,7 @@ migration=mf.BasicCleanig(migration,5,5)
 income=mf.BasicCleanig(income,5,5)
 
 
-#Specific cleaning for migration
+#more cleaning and stacking 
 new_header = list(migration.iloc[0])
 old_header = list(migration.columns)
 migration.columns = new_header
@@ -30,6 +30,8 @@ migration['Sponsored_visas']=migration['Sponsored_visas'].apply(mf.charactersout
 income = mf.stackAndDataframe(income)
 new_columns=['Year','Activity','Median_income']
 income.columns=new_columns
+income['Activity']=income['Activity'].apply(lambda x: x.lower())
+migration['Activity']=migration['Activity'].apply(lambda x: x.lower())
 
 #Export to excel file
 if not os.path.exists('../data'):
