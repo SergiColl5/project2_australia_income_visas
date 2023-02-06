@@ -7,7 +7,7 @@ import seaborn as sns
 
 # I import the excel file that I prepared in previous steps, all the code is within other files.
 
-all_together = pd.read_excel('../data/all_together.xlsx')
+all_together = pd.read_excel('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/data/all_together.xlsx')
 
 
 def line_income_years():
@@ -15,14 +15,16 @@ def line_income_years():
     mean_median_income_by_year = all_together.groupby('Year')['Median_income'].mean().reset_index()
 
     # Plot the mean median income over the years
-    plt.plot(mean_median_income_by_year['Year'], mean_median_income_by_year['Median_income'])
+    fig1 = plt.plot(mean_median_income_by_year['Year'], mean_median_income_by_year['Median_income'])
 
     # Add labels and title to the plot and save it
     plt.xlabel('Year')
     plt.ylabel('Mean Median Income in USD')
     plt.title('Mean Median Income over the Years')
-    plt.savefig('../Plots/line_Income_Years.jpg')
-    pass 
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/line_Income_Years.jpg')
+    
+    return plt.show()
+
 line_income_years()
 
 def bar_income_activity ():
@@ -33,7 +35,7 @@ def bar_income_activity ():
     mean_sponsored_visas_by_activity = mean_sponsored_visas_by_activity.sort_values(by='Median_income', ascending=False)
 
     # Plot the mean number of sponsored visas for each activity as a bar plot
-    plt.bar(mean_sponsored_visas_by_activity['Activity'], mean_sponsored_visas_by_activity['Median_income'],width=0.9)
+    fig2 = plt.bar(mean_sponsored_visas_by_activity['Activity'], mean_sponsored_visas_by_activity['Median_income'],width=0.9)
 
     # Add labels and title to the plot
     plt.xlabel('Economic Activity')
@@ -43,10 +45,12 @@ def bar_income_activity ():
 
     # Rotate the x-axis labels to improve readability
     plt.xticks(rotation=90)
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/bar_Income_activity.jpg')
 
     # Show the plot
-    plt.savefig('../Plots/bar_Income_activity.jpg')
-    pass
+    return plt.show()
+
+
 bar_income_activity()
 
 
@@ -63,8 +67,9 @@ def line_visas_years():
     plt.title('Mean Sponsored Visas over the Years')
 
     # Show the plot
-    plt.savefig('../Plots/line_Visas_Years.jpg')
-    pass
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/line_Visas_Years.jpg')
+    return plt.show()
+    
 line_visas_years()
 
 
@@ -89,8 +94,9 @@ def bar_visas_activity ():
     plt.xticks(rotation=90)
 
     # Show the plot
-    plt.savefig('../Plots/bar_Visas_activity.jpg')
-    pass
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/bar_Visas_activity.jpg')
+    return plt.show()
+
 bar_visas_activity()
 
 
@@ -111,8 +117,9 @@ def scatter_income_activity ():
     plt.ylabel('Mean Sponsored Visas')
     plt.title('Relationship between Median Income and Sponsored Visas by Economic Activity')
 
-    plt.savefig('../Plots/scatter_income_activity.jpg')
-    pass
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/scatter_income_activity.jpg')
+    return plt.show()
+
 scatter_income_activity()
 
 
@@ -121,8 +128,9 @@ def box_income ():
     plt.boxplot(boxplot_df['Median_income'])
     plt.ylabel('Income in USD')
     plt.title('Distribution of Income')
-    plt.savefig('../Plots/box_income.jpg')
-    pass
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/box_income.jpg')
+    return plt.show()
+
 box_income()
 
 
@@ -138,6 +146,6 @@ def heat_income():
     plt.xlabel('Economic Activity')
     plt.ylabel('Year')
     plt.title('Relationship between Year, Median Income')
-    plt.savefig('../Plots/heat_Income.jpg')
-    pass
+    plt.savefig('/Users/sergicoll/Documents/Ironhack/projects/project2_australia_income_visas/Plots/heat_Income.jpg')
+    return plt.show()
 heat_income()
