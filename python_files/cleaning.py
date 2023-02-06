@@ -38,3 +38,4 @@ if not os.path.exists('../data'):
 income.to_excel('../data/income_clean.xlsx')
 migration.to_excel('../data/migration_clean.xlsx')
 
+print('Both cleaned files have been saved into "Data" folder')

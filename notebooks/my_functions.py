@@ -1,5 +1,6 @@
 import pandas as pd
 import requests 
+import os
 def BasicCleanig (dataframe,NumberOfValuesInRow,NumberOfValuesInColum):
     '''This function recevies a DataFrame, the minimum number of values that I want in my rows and columns.
         It deletes the empty rows, the empty columns, and the duplicates.
@@ -37,3 +38,17 @@ def requestAPI (url):
         return data
     else:
         return print( f'Request failed, this is the error :   {response}')
+def requestAPIxlsx (url):
+    '''This function download an excel file using an API url and saves it into a folder called "data" in the same directory.
+        it creates the folder if it doesn't exists.'''
+            
+    response_xlsx = requests.get(url)
+    # Check the code of the response and return accordingly.
+    if response_xlsx.status_code==200:
+        if not os.path.exists('../data'):
+            os.mkdir('../data')
+        with open('../data/downloaded_excel.xlsx','wb') as f:
+            f.write(response_xlsx.content)
+        return print('Your file has been downloaded to you folder "data".')
+    else: 
+        return print('Failed to download file. Response status code:', response_xlsx.status_code)
